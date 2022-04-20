@@ -1,0 +1,42 @@
+server:
+  port: 8080
+
+management:
+  server:
+    port: 8180
+  endpoints:
+    web:
+      exposure:
+        include: ["*"]
+  health:
+    defaults:
+      enabled: false
+
+cors:
+  allowed-origins: "*"
+  max-age-in-seconds: 3600
+
+health:
+  authentication:
+#    keys: key1
+
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/cryptoprices
+    username: root
+    password: mypass
+  jpa:
+    properties:
+      hibernate:
+        database-platform: org.hibernate.dialect.MariaDB103Dialect
+  mvc:
+    converters:
+      preferred-json-mapper: gson
+
+springdoc:
+  api-docs:
+    path: /api-docs
+  swagger-ui:
+    operationsSorter: method
+    use-root-path: true
+  version: 1.0
